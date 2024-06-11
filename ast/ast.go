@@ -20,7 +20,7 @@ type Expression interface {
 	expressionNode()
 }
 
-// ********* START OF IDENTIFIER STATEMENT ***************
+// ********* ast.Identifier ***************
 type Identifier struct {
 	Token token.Token
 	Value string
@@ -28,7 +28,18 @@ type Identifier struct {
 func (i *Identifier) expressionNode() {}
 func (i *Identifier) TokenLiteral() string { return i.Token.Literal}
 func (i *Identifier) String() string { return i.Value}
-// ********* END OF IDENTIFIER STATEMENT ***************
+
+// ********* ast.IntegerLiteral ***************
+type IntegerLiteral struct {
+	Token token.Token
+	Value int64
+}
+
+func (il *IntegerLiteral) expressionNode() {}
+func (il *IntegerLiteral) TokenLiteral() string { return il.Token.Literal }
+func (il *IntegerLiteral) String() string { return il.Token.Literal }
+
+
 
 // ********* EXPRESSION STATEMENT ***************
 type ExpressionStatement struct {
